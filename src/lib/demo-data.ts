@@ -1,5 +1,7 @@
 // Données d'exemple (version 0) — FICTIVES, à remplacer par le vrai catalogue (Firestore).
 
+import { tsaGames, type Game } from "./tsa-games";
+
 export type Audience = "teacher" | "parent";
 
 export type School = {
@@ -18,10 +20,18 @@ export type Accommodation = {
   detail: string;
 };
 
+export type Difficulty = {
+  title: string;
+  detail: string;
+};
+
 export type Disorder = {
   slug: string;
   name: string;
   summary: string;
+  difficulties: Difficulty[];
+  // Jeux communs aux institutrices et aux parents.
+  games?: Game[];
   teacher: Accommodation[];
   parent: Accommodation[];
 };
@@ -42,7 +52,8 @@ export const disorders: Disorder[] = [
   {
     slug: "dyslexie",
     name: "Dyslexie",
-    summary: "Trouble durable de l'apprentissage de la lecture et de l'orthographe.",
+    summary: "Difficulté marquée dans l'apprentissage de la lecture et la reconnaissance des mots.",
+    difficulties: [],
     teacher: [
       { title: "Police adaptée et agrandie", detail: "Documents en police sans empattement, taille 14 minimum, interligne 1,5." },
       { title: "Temps supplémentaire", detail: "Un tiers de temps en plus lors des évaluations écrites." },
@@ -56,9 +67,58 @@ export const disorders: Disorder[] = [
     ],
   },
   {
+    slug: "dysorthographie",
+    name: "Dysorthographie",
+    summary: "Difficulté persistante en orthographe et en expression écrite.",
+    difficulties: [],
+    teacher: [],
+    parent: [],
+  },
+  {
+    slug: "dyscalculie",
+    name: "Dyscalculie",
+    summary: "Difficulté à comprendre ou à manipuler les nombres et le raisonnement mathématique.",
+    difficulties: [],
+    teacher: [],
+    parent: [],
+  },
+  {
+    slug: "dyspraxie",
+    name: "Dyspraxie",
+    summary: "Trouble de la coordination et du geste (dysfonctionnement de la planification motrice).",
+    difficulties: [],
+    teacher: [
+      { title: "Limiter la copie", detail: "Fournir les leçons photocopiées ou en version numérique." },
+      { title: "Outils adaptés", detail: "Règle antidérapante, ciseaux à ressort, feuilles à grands interlignes." },
+      { title: "Évaluer à l'oral", detail: "Permettre une réponse orale quand l'écrit n'est pas l'objet de l'évaluation." },
+    ],
+    parent: [
+      { title: "Habillage simplifié", detail: "Vêtements à velcro ou élastiques plutôt que boutons et lacets." },
+      { title: "Jeux de construction", detail: "Encourager les activités manuelles ludiques, sans pression." },
+      { title: "Ordinateur pour l'écrit", detail: "Initier tôt au clavier pour les longs textes." },
+    ],
+  },
+  {
+    slug: "dysphasie",
+    name: "Dysphasie",
+    summary: "Trouble de l'expression et de la compréhension du langage oral.",
+    difficulties: [],
+    teacher: [],
+    parent: [],
+  },
+  {
+    slug: "dysgraphie",
+    name: "Dysgraphie",
+    summary: "Difficulté touchant le geste d'écriture et la qualité du tracé.",
+    difficulties: [],
+    teacher: [],
+    parent: [],
+  },
+  {
     slug: "tdah",
-    name: "TDAH",
-    summary: "Trouble du déficit de l'attention, avec ou sans hyperactivité.",
+    name: "TDA/H",
+    summary: "Trouble du déficit de l'attention avec ou sans hyperactivité.",
+    difficulties: [],
     teacher: [
       { title: "Place stratégique", detail: "Près de l'enseignante, loin des fenêtres et de la porte." },
       { title: "Consignes découpées", detail: "Une consigne à la fois, écrite au tableau en plus de l'oral." },
@@ -72,19 +132,17 @@ export const disorders: Disorder[] = [
     ],
   },
   {
-    slug: "dyspraxie",
-    name: "Dyspraxie",
-    summary: "Trouble de la planification et de la coordination des gestes.",
-    teacher: [
-      { title: "Limiter la copie", detail: "Fournir les leçons photocopiées ou en version numérique." },
-      { title: "Outils adaptés", detail: "Règle antidérapante, ciseaux à ressort, feuilles à grands interlignes." },
-      { title: "Évaluer à l'oral", detail: "Permettre une réponse orale quand l'écrit n'est pas l'objet de l'évaluation." },
+    slug: "tsa",
+    name: "TSA",
+    summary: "Trouble du spectre de l'autisme.",
+    difficulties: [
+      { title: "Communication et interactions sociales", detail: "Difficultés à échanger, à comprendre les émotions ou à utiliser le langage non verbal." },
+      { title: "Comportements et intérêts", detail: "Présence d'intérêts restreints, de routines rigides ou de mouvements répétitifs (stéréotypies)." },
+      { title: "Particularités sensorielles", detail: "Hypersensibilité ou hyposensibilité aux bruits, aux lumières ou au contact physique." },
     ],
-    parent: [
-      { title: "Habillage simplifié", detail: "Vêtements à velcro ou élastiques plutôt que boutons et lacets." },
-      { title: "Jeux de construction", detail: "Encourager les activités manuelles ludiques, sans pression." },
-      { title: "Ordinateur pour l'écrit", detail: "Initier tôt au clavier pour les longs textes." },
-    ],
+    games: tsaGames,
+    teacher: [],
+    parent: [],
   },
 ];
 

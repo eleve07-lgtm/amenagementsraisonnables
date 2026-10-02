@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    // suppressHydrationWarning : des extensions (ex. Daspalecte) ajoutent des attributs à <html>.
+    // suppressHydrationWarning : des extensions (ex. Daspalecte, ColorZilla) ajoutent des attributs à <html> et <body>.
     <html lang="fr" className={`${geistSans.variable} h-full antialiased`} suppressHydrationWarning>
-      <body className="flex min-h-full flex-col font-sans">{children}</body>
+      <body className="flex min-h-full flex-col font-sans" suppressHydrationWarning>{children}</body>
     </html>
   );
 }

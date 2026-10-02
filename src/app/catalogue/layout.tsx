@@ -12,7 +12,7 @@ export default async function CatalogueLayout({ children }: LayoutProps<"/catalo
   return (
     <div className="flex flex-1 flex-col">
       <header className="border-b border-line bg-surface">
-        <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-3 px-4 py-4">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4">
           <Link href="/catalogue" className="font-bold text-ink">
             Aménagements raisonnables
           </Link>
@@ -28,7 +28,7 @@ export default async function CatalogueLayout({ children }: LayoutProps<"/catalo
           </div>
         </div>
       </header>
-      <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-8">{children}</main>
+      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8">{children}</main>
     </div>
   );
 }

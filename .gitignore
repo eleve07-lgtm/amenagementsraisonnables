@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# portail du Pôle (prototype) : fiches et codes des agents
+/data/

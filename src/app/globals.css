@@ -11,6 +11,8 @@
   --accent-soft: #e3efed;
   --danger: #b42318;
   --warn-soft: #fbf3dc;
+  --play: #e7a8c9;
+  --play-strong: #a3346f;
 }
 
 @theme inline {
@@ -24,6 +26,8 @@
   --color-accent-soft: var(--accent-soft);
   --color-danger: var(--danger);
   --color-warn-soft: var(--warn-soft);
+  --color-play: var(--play);
+  --color-play-strong: var(--play-strong);
   --font-sans: var(--font-geist-sans);
 }
 
